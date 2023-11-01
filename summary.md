@@ -107,5 +107,5 @@ PK 인덱스를 항상 검색해야 함.
 
 2. 세컨더리 인덱스들이 PK를 가지고 있어 커버링에 유리.
 
-<br/><img src="/img/2.png">
-<br/><img src="/img/3.png"><br/>
+<br/><img src="/img/p1_2.png">
+<br/><img src="/img/p1_3.png"><br/>
