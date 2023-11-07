@@ -62,4 +62,17 @@ public class PostRepository {
                 .createdAt(post.getCreatedAt())
                 .build();
     }
+
+    public void bulkInsert(List<Post> posts) {
+        var sql = String.format("""
+                INSERT INTO `%s` (memberId, contents, createdDate, createdAt)
+                VALUES (:memberId, :contents, :createdDate, :createdAt)
+                """, TABLE);
+
+        SqlParameterSource[] params = posts
+                .stream()
+                .map(BeanPropertySqlParameterSource::new)
+                .toArray(SqlParameterSource[]::new);
+        namedParameterJdbcTemplate.batchUpdate(sql, params);
+    }
 }
