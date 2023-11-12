@@ -124,5 +124,5 @@ PK로 Auto Increment / UUID 각 장단점? 찾아보기</br></br>
 그렇기에 실무에서는 Increment와 UUID를 같이 쓰거나 Increment만을 쓰는 것을 고려하는 것이 좋다.</br>
 
 참고 링크:</br>
-<a href="https://stir.tistory.com/294" target="_blank">https://stir.tistory.com/294</a></br>
-<a href="https://velog.io/@gwichanlee/DB-MySQL-Auto-increment-vs-UUID#:~:text=MySQL%EC%97%90%EC%84%9C%20%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%ED%82%A4%EB%A5%BC,%EA%B0%80%20%EA%B3%84%EC%86%8D%20%EB%B0%80%EB%A6%B4%20%EC%88%98%20%EC%9E%88%EB%8B%A4." target="_blank">https://velog.io/@gwichanlee/</a>
+<a href="https://stir.tistory.com/294" target="_blank">tistory-stir</a></br>
+<a href="https://velog.io/@gwichanlee/DB-MySQL-Auto-increment-vs-UUID#:~:text=MySQL%EC%97%90%EC%84%9C%20%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%ED%82%A4%EB%A5%BC,%EA%B0%80%20%EA%B3%84%EC%86%8D%20%EB%B0%80%EB%A6%B4%20%EC%88%98%20%EC%9E%88%EB%8B%A4." target="_blank">velog-gwichanlee</a>
