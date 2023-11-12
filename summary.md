@@ -105,4 +105,24 @@ MySQL의 경우 인덱스에 PK가 있음 but Oracle은 인덱스에 해당 데�
 <br/><img src="/img/p1_2.png">
 <br/><img src="/img/p1_3.png"><br/>
 
-PK로 Auto Increment / UUID 각 장단점? 찾아보기
+PK로 Auto Increment / UUID 각 장단점? 찾아보기</br></br>
+
+- auto_increment
+  장점: 빠름</br>사람이 보기 쉬움</br>
+  단점: 분산 시스템에 적합하지 않음(서로 다른 DB에 저장하는 경우 key가 같은 데이터를 처리하는 문제)</br>키 예측 쉬움
+
+- UUID
+  장점: UUID를 어디서든지 만들고 고유성을 보장할 수 있어 분산 시스템에 용이</br>
+  단점: 성능 저하(클러스터 인덱스의 정렬 비용 증가)</br>사람이 보기 어려움</br>필요 이상으로 많은 공간 차지</br></br>
+
+95%의 상황에서는 Increment PK를 사용해야하고 보조키로 UUID를 사용하는게 대안이라고 한다.</br>
+나머지 5%의 상황은 UUID를 기본키로 사용하는 것인데 그렇게 하는 이유는 데이터베이스 병합 시에 키 충돌 문제가 발생할 것 같을때만 쓰라고 한다.(극히 드물다)</br>
+
+결론적으로는 가장 이상적인 솔루션은 PK를 UUID로 사용하고 절대 외부로 노출 시키지 않는 것이라고 한다.</br>
+하지만 말 그대로 이상적이기 때문에 그렇게 하면 제대로 개발을 할 수 없다. PK 자체를 외부로 꺼내지 않으면 API 요청을 할 수 없기 때문이다.</br>
+
+그렇기에 실무에서는 Increment와 UUID를 같이 쓰거나 Increment만을 쓰는 것을 고려하는 것이 좋다.</br>
+
+참고 링크:</br>
+<https://stir.tistory.com/294></br>
+[https://velog.io/@gwichanlee/](https://velog.io/@gwichanlee/DB-MySQL-Auto-increment-vs-UUID#:~:text=MySQL%EC%97%90%EC%84%9C%20%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%ED%82%A4%EB%A5%BC,%EA%B0%80%20%EA%B3%84%EC%86%8D%20%EB%B0%80%EB%A6%B4%20%EC%88%98%20%EC%9E%88%EB%8B%A4.)
