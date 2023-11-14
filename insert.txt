@@ -4,7 +4,7 @@ begin
 	declare i int default 1;
     while (i <= 1000000) do
 		insert into post values(i, 3, REGEXP_REPLACE(TO_BASE64(MD5(RAND())), '[+/=]', ''), 
-        DATE_FORMAT(FROM_UNIXTIME(FLOOR(unix_timestamp('1998-01-01 00:00:00')+(RAND()*(unix_timestamp('2023-02-04 00:00:00')-unix_timestamp('2010-01-01 00:00:00'))))), "%Y-%c-%e")
+        DATE_FORMAT(FROM_UNIXTIME(FLOOR(rand()*unix_timestamp('2023-02-04'))), "%Y-%c-%e")
         , '2023-11-09 00:22:00');
         set i = i + 1;
 	end while;
