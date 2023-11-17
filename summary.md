@@ -126,3 +126,41 @@ PK로 Auto Increment / UUID 각 장단점? 찾아보기</br></br>
 참고 링크:</br>
 <a href="https://stir.tistory.com/294" target="_blank">tistory-stir</a></br>
 <a href="https://velog.io/@gwichanlee/DB-MySQL-Auto-increment-vs-UUID#:~:text=MySQL%EC%97%90%EC%84%9C%20%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%ED%82%A4%EB%A5%BC,%EA%B0%80%20%EA%B3%84%EC%86%8D%20%EB%B0%80%EB%A6%B4%20%EC%88%98%20%EC%9E%88%EB%8B%A4." target="_blank">velog-gwichanlee</a>
+
+## 인덱스를 다룰 때 주의해야 할 점
+
+1. 인덱스 필드 가공</br>
+
+인덱스 필드를 가공하면 인덱스를 탈 수 없다.</br>
+ex:
+
+```
+select * from member where age * 10 = 1(가공)
+select * from member where age = '1'(타입 불일치)
+```
+
+2. 복합 인덱스</br>
+
+<br/><img src="/img/p1_5.png"><br/>
+
+여기서 만약 where문에 원산지만 들어오면 인덱스를 탈 수 없다. 왜?</br>
+원산지만 보면 정렬되어있지 않은 정보이기 때문.</br>
+하지만 where문에 과일만 들어와도 인덱스를 탈 수 있다. 정렬되어있기 때문.</br>
+그래서 복합 인덱스 설정 시 맨 앞 즉, 선두 컬럼을 무엇으로 할지가 매우 중요.</br>
+
+3. 하나의 쿼리에는 하나의 인덱스만</br>
+
+여러 인덱스 테이블을 동시에 탐색하지 않는다.</br>
+5개의 인덱스를 걸어도 옵티마이저가 하나만 선택한다.</br>
+where, order by, group by 등 혼합해서 사용할 때는 인덱스를 잘 고려해야 한다.</br>
+
+4. 기타</br>
+
+- 의도대로 인덱스가 동작하지 않을 수도 있다. explain으로 확인.</br>
+  개발 환경과 실제 배포 환경의 데이터가 다를 수 있다.</br>
+
+- 인덱스도 비용이다. 쓰기 성능 희생하고 조회 성능을 얻는 것.</br>
+
+- 꼭 인덱스만으로 해결할 수 있는 문제인가?</br>
+
+- 인덱스는 데이터의 식별정도가 높은 것으로 하는 게 좋다.</br>
